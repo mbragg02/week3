@@ -18,25 +18,46 @@ public class PaperSizes {
 		a0.paperNumber = 0;
 		Paper_size a1 = getMeSmallerSize(a0);
 		
-		int size = 3;
+		String paperSize = "a4";
+		int size = 0;
+		paperSize = paperSize.substring(1);
+
+		if (paperSize.equals("00")) {
+			size = -1;
+		} else if (paperSize.equals("0000")) {
+			size = -2;
+		} else {
+			size = Integer.parseInt(paperSize);
+		}
 		
 		Paper_size an = getRightSize(a0, size); 
 		System.out.println("A1 is " + a1.longside + "x" + a1.shortside);
-		System.out.println("A" + size + " is " + an.longside + "x" + an.shortside);
+		System.out.println("A" + paperSize + " is " + an.longside + "x" + an.shortside);
 
 	}
 	
 	
 	public static Paper_size getRightSize(Paper_size biggerSize, int target) {
+		
 		if (biggerSize.paperNumber == target) {
 			return biggerSize;
 		} else {
 			Paper_size result = new Paper_size();
-			result.shortside = biggerSize.longside / 2;
-			result.longside = biggerSize.shortside;
-			result.paperNumber = biggerSize.paperNumber + 1;
-			result = getRightSize(result, target);
-			return result;
+			if (target > biggerSize.paperNumber) {
+				result.shortside = biggerSize.longside / 2;
+				result.longside = biggerSize.shortside;
+				result.paperNumber = biggerSize.paperNumber + 1;
+				result = getRightSize(result, target);
+				return result;
+			} else {
+				result.shortside = biggerSize.longside;
+				result.longside = biggerSize.shortside * 2;
+				result.paperNumber = biggerSize.paperNumber - 1;
+				result = getRightSize(result, target);
+				return result;
+				
+			}
+			
 		}
 
 		
