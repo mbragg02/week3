@@ -12,23 +12,52 @@ public class PaperSizes {
 	 * when calculating smaller sizes.
 	 */
 	public static void main(String[] args) {
+		Paper_size a0 = new Paper_size();
+		a0.longside = 1189;
+		a0.shortside = 841;
+		a0.paperNumber = 0;
+		Paper_size a1 = getMeSmallerSize(a0);
+		
+		int size = 3;
+		
+		Paper_size an = getRightSize(a0, size); 
+		System.out.println("A1 is " + a1.longside + "x" + a1.shortside);
+		System.out.println("A" + size + " is " + an.longside + "x" + an.shortside);
 
 	}
 	
-	public static String paperSize(String input) {
-		// Define A0 paper size
-		int A0sideA = 841;
-		int A0sideB = 1189;
-		
-		int sideA = 0;
-		int sideB = 0;
-		
-		// Determine required paper size from input
-		char size = input.charAt(1);
-		
-		
-		
-		return "";
-	}
+	
+	public static Paper_size getRightSize(Paper_size biggerSize, int target) {
+		if (biggerSize.paperNumber == target) {
+			return biggerSize;
+		} else {
+			Paper_size result = new Paper_size();
+			result.shortside = biggerSize.longside / 2;
+			result.longside = biggerSize.shortside;
+			result.paperNumber = biggerSize.paperNumber + 1;
+			result = getRightSize(result, target);
+			return result;
+		}
 
+		
+	}
+	
+	public static Paper_size getMeSmallerSize(Paper_size bigSize) {
+		Paper_size result = new Paper_size();
+		result.shortside = bigSize.longside / 2;
+		result.longside = bigSize.shortside;
+		result.paperNumber = bigSize.paperNumber + 1;
+		
+		return result;
+	}
+	
+	
+	
+
+}
+
+class Paper_size {
+	int longside;
+	int shortside;
+	int paperNumber;
 }

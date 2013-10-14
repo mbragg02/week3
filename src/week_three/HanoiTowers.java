@@ -8,7 +8,7 @@ public class HanoiTowers {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		int disks = 40;  
+		int disks = 6;  
 	    int StepsToSolution = 0;
 	    StepsToSolution = hanoi(disks, 1, 3);
 	    System.out.println(StepsToSolution + " moves needed.");
@@ -25,14 +25,12 @@ public class HanoiTowers {
 
 			// Moves n - 1 disks from the initial post to the middle post.
 			moves += hanoi(nDisks - 1, postFrom, middlePost);
-		    System.out.println("moving to post 2");
 		    
 			// Move the last remaining disk from post 1 to post 3;
 			moves += 1; 
 			
 			// Move the n - 1 disks from the middle post to the last post.
 			moves += hanoi(nDisks - 1, middlePost, postTo);
-		    System.out.println("moving to post 3");
 
 		}
 		
