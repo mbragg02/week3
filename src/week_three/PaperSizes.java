@@ -10,6 +10,7 @@ public class PaperSizes {
 	 * Create a method that takes a String parameter representing a size (e.g. ÓA4Ó, ÒA00000Ó) and prints on 
 	 * screen the size of the corresponding sheet of paper. For simplicity, you can ignore rounding errors 
 	 * when calculating smaller sizes.
+	 * 
 	 */
 	public static void main(String[] args) {
 
