@@ -17,6 +17,10 @@ public class CreatingMatrices {
 		
 		myMatrix.setColumn(1, "4,5,6");
 		
+//		myMatrix.prettyPrint();
+		
+		
+		myMatrix.setMatrix("1,2,3;4,5,6;7,8,9");
 		myMatrix.prettyPrint();
 
 
@@ -152,6 +156,36 @@ class Matrix {
 				}
 			System.out.print("\n");
 		}
+	}
+	
+	
+	/**
+	 * 4. One-liners for matrices (*)
+	 * Extend your Matrix class with a method setMatrix(String) that takes a String representing the 
+	 * numbers to be put in the elements of the array separated by commas, separating rows by semicolons, 
+	 * e.g. 1,2,3;4,5,6;7,8,9.
+	 * @param str String. The string representing the values to be inserted into the matrix.
+	 */
+	public void setMatrix(String str) {
+		// replace all non-digits with an empty string.
+		str = str.replaceAll("\\D+","");
+		int counter = 0;
+
+		//check that the number of digits in the string match the number of elements in the column.
+		if (str.length() == (this.colums * this.rows)) {
+			
+			for (int i = 0; i < this.rows; i ++) {
+				for (int j = 0; j < this.colums; j++) {
+					
+					this.twoDArray[i][j] = Character.getNumericValue(str.charAt(counter));;
+					counter ++;
+					}
+			}	
+			
+			
+			
+		}		
+		
 	}
 	
 	
