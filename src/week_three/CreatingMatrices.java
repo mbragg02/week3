@@ -189,4 +189,13 @@ class Matrix {
 	}
 	
 	
+	public boolean isSymmetrical() {
+//		MatrixChecker newchecker = new MatrixChecker();
+		
+		
+		return false;
+		
+	}
+	
+	
 }
