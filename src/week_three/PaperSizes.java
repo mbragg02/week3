@@ -15,50 +15,45 @@ public class PaperSizes {
 	public static void main(String[] args) {
 		
 		String userPaper = "A4";
-		System.out.print(paperSize(userPaper, 841, 1189));
-		
-
+		System.out.print(paperSize(userPaper));
 	}
 	
-	public static String paperSize(String input, int shortside, int longside) {	
+	public static String paperSize(String input) {	
 		
 		// Define A0 paper size
-//		int default_shortSide = 841;
-//		int default_longSide = 1189;
+		int default_shortSide = 841;
+		int default_longSide = 1189;
 		
-		int defaultSize = 0;
-		String paperSize = "";
-		
-		int temp_longside;
-		int temp_shortside;
-	
-		
+		String paper = "";
 		
 		// Determine required paper size from input
 		int size = Integer.parseInt(input.substring(1));
-		
-		if(size > defaultSize) {
-			
-//			temp_longside = default_shortSide;
-//			temp_shortside = default_longSide / 2;
-			
-//			default_shortSide = temp_shortside;
-//			default_longSide = temp_longside;
-			
-			System.out.println("shortside " + shortside);
-			System.out.println("longside " + longside);
 
-			paperSize = "A" + (size - 1);
-			System.out.println(paperSize);
+		paper = paperCalculator(default_shortSide, default_longSide, size);
 
-			paperSize = paperSize(paperSize, (longside / 2), shortside);
+		return paper;
+	
+	}
+	
+	public static String paperCalculator(int shortside, int longside, int n) {
+		
+		int temp_longside;
+		int temp_shortside;
+		
+		String temp = "";
+		
+		if (n == 0) {
+			return "";
+		} else {
+			temp_shortside = longside / 2;
+			temp_longside = shortside;
+			n = n - 1;
+			temp = paperCalculator(temp_shortside, temp_longside, n);
 			
-		} 
+		}
 		
-		return paperSize;
-
-		
-		
+//		return temp_longside + "mm " + temp_shortside + "mm"  ;
+		return temp;
 	}
 
 }
