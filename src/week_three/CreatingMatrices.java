@@ -9,19 +9,29 @@ public class CreatingMatrices {
 		
 		Matrix myMatrix = new Matrix(3,3);
 		
+		myMatrix.prettyPrint();
+
+		
 		System.out.println(myMatrix.toString());
 		
-		myMatrix.setElement(2,0,20);
+		System.out.println(myMatrix.isSymmetrical());
+
+		
+		
+//		myMatrix.setElement(2,0,20);
 		
 		myMatrix.setRow(0, "1,2,3");
 		
-		myMatrix.setColumn(1, "4,5,6");
+//		myMatrix.setColumn(1, "4,5,6");
 		
 //		myMatrix.prettyPrint();
 		
 		
-		myMatrix.setMatrix("1,2,3;4,5,6;7,8,9");
+		myMatrix.setMatrix("1,4,2;0,3,4;0,0,1");
 		myMatrix.prettyPrint();
+		System.out.println(myMatrix.isTriangular());
+
+
 
 
 	}
@@ -188,13 +198,23 @@ class Matrix {
 		
 	}
 	
-	
+	/**
+	 * Check if the two-dimensional array is symmetrical. Uses the MatrixChecker class.
+	 * @return boolean. Symmetrical or not
+	 */
 	public boolean isSymmetrical() {
-//		MatrixChecker newchecker = new MatrixChecker();
-		
-		
-		return false;
-		
+		MatrixChecker newchecker = new MatrixChecker();
+		return newchecker.isSymmetrical(this.twoDArray);	
+	}
+	
+	
+	/**
+	 *  Check if the two-dimensional array is a triangular matrix. Uses the MatrixChecker class.
+	 * @return boolean. triangular matrix or not
+	 */
+	public boolean isTriangular() {
+		MatrixChecker newchecker = new MatrixChecker();
+		return newchecker.isTriangular(this.twoDArray);	
 	}
 	
 	
