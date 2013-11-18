@@ -8,7 +8,7 @@ public class HanoiTowers {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		int disks = 6;  
+		int disks = 3;  
 	    int StepsToSolution = 0;
 	    StepsToSolution = hanoi(disks, 1, 3);
 	    System.out.println(StepsToSolution + " moves needed.");
